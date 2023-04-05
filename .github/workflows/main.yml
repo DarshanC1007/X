@@ -1,0 +1,21 @@
+name: Build react app
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-node:
+    name: Build Node
+    runs-on: ubuntu-latest
+    container: node:16
+    steps:
+      - run: node --version
+        name: check node version
+      - run: npm --version  
+        name: check NPM version
+      - uses: actions/checkout@v2
+        name: checkout code
+      - run: npm install
+        name: install npm packages
+      - run: npm start
+        name: run application
